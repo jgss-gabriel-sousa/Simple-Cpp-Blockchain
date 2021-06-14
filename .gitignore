@@ -33,6 +33,6 @@
 # Windows
 *.ini
 
-# Others
+# CodeBlocks
 *.depend
 *.layout
