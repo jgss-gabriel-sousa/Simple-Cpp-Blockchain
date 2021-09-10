@@ -1,16 +1,19 @@
-#include "Blockchain.h"
+#include "../include/Blockchain.h"
 
-Blockchain::Blockchain(){
+Blockchain::Blockchain(uint32_t difficulty){
+    this->difficulty = difficulty;
+
     chain.push(Block(0,"Genesis"));
-    difficulty = 5;
 }
 
 
-void Blockchain::AddBlock(Block newBlock){
+string Blockchain::AddBlock(Block newBlock){
     newBlock.prevHash = GetLastBlock().GetHash();
-    newBlock.MineBlock(difficulty);
+    string blockHash = newBlock.MineBlock(difficulty);
 
     chain.push(newBlock);
+
+    return blockHash;
 }
 
 

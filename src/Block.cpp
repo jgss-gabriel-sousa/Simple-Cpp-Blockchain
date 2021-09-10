@@ -1,18 +1,21 @@
-#include "Block.h"
-#include "sha256.h"
+#include "../include/Block.h"
+#include "../include/sha256.h"
 
-Block::Block(uint32_t indexIn, const string &dataIn) : index(indexIn),data(dataIn){
+Block::Block(uint32_t index, const string &data){
+    this->index = index;
+    this->data = data;
+
     nOnce = -1;
     timestamp = time(nullptr);
 }
 
 
 string Block::GetHash(){
-        return blockHash;
+    return blockHash;
 }
 
 
-void Block::MineBlock(uint32_t difficulty){
+string Block::MineBlock(uint32_t difficulty){
     char cstr[difficulty+1];
 
     for(uint32_t i = 0; i < difficulty; i++)
@@ -25,6 +28,8 @@ void Block::MineBlock(uint32_t difficulty){
         nOnce++;
         blockHash = CalculateHash();
     }while(blockHash.substr(0,difficulty) != str);
+
+    return blockHash;
 }
 
 

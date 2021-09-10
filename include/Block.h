@@ -13,7 +13,7 @@ class Block{
         string prevHash;
 
         string GetHash();
-        void MineBlock(uint32_t nDifficulty);
+        string MineBlock(uint32_t nDifficulty);
 
     private:
         uint32_t index;

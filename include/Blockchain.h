@@ -5,9 +5,9 @@
 
 class Blockchain{
     public:
-        Blockchain();
+        Blockchain(uint32_t);
 
-        void AddBlock(Block newBlock);
+        string AddBlock(Block);
 
     private:
         uint32_t difficulty;
